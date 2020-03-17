@@ -1,0 +1,26 @@
+version: v4
+base: docker-registry.wikimedia.org/wikimedia-buster
+lives:
+  in: /srv/app
+ 
+variants:
+  production:
+    apt:
+      packages:
+        - git
+        - python
+        - python-pip
+        - openjdk-11-jdk
+    python:
+      requirements:
+        - "src/mishkal/requirements.txt"
+    copies: 
+      - from: local
+        source: ./src
+        destination: ./src
+      - from: local
+        source: ./entrypoint.sh
+        destination: .
+    entrypoint: 
+      - "./entrypoint.sh"
+   
