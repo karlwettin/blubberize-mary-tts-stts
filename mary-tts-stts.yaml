@@ -10,6 +10,7 @@ variants:
         - git
         - python
         - python-pip
+        - python-setuptools
         - openjdk-11-jdk
     python:
       requirements:
