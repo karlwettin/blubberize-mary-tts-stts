@@ -1,20 +1,15 @@
 version: v4
 base: docker-registry.wikimedia.org/wikimedia-buster
 lives:
-  in: /srv/app
- 
+  in: /srv/mary-tts-stts
+   
 variants:
   production:
     apt:
-      packages:
-        - git
-        - python
-        - python-pip
-        - python-setuptools
-        - openjdk-11-jdk
+      packages: [ python-setuptools, openjdk-11-jre ]
     python:
-      requirements:
-        - "src/mishkal/requirements.txt"
+        version: python2.7
+        requirements: [ src/mishkal/requirements.txt ]
     copies: 
       - from: local
         source: ./src
@@ -22,6 +17,5 @@ variants:
       - from: local
         source: ./entrypoint.sh
         destination: .
-    entrypoint: 
-      - "./entrypoint.sh"
+    entrypoint: [ ./entrypoint.sh ]
    

@@ -34,7 +34,9 @@ else
     m_error "Unable to clone Mishkal git repo!"
   fi
   cd mishkal
+  git apply ../../mishkal.diff
 fi
+
 # back to src
 cd ..
 
