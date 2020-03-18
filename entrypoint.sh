@@ -9,7 +9,8 @@ echo "Waited 10 seconds for Mishkal webserver to start before starting Mary TTS.
 
 
 echo "Starting Mary TTS STTS."
-#export GRADLE_USER_HOME=/srv/app/srv/gradle_cache
+export GRADLE_USER_HOME=/srv/mary-tts-stts/src/gradle_user_home
 cd src/marytts
-./gradlew run
+./gradlew run --no-rebuild
 
+/bin/bash

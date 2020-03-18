@@ -13,8 +13,8 @@ fi
 
 if [[ "$_java" ]]; then
   version=$("$_java" -version 2>&1 | awk -F '"' '/version/ {print $2}')
-  if ! [[ "$version" =~ ^1\.8\..* ]]; then
-    m_error "JAVA_HOME must point at 1.8, but was $version. Try update-java-alternatives -l"
+  if ! [[ "$version" =~ ^11\.0\..* ]]; then
+    m_error "JAVA_HOME must point at 11.0.x but was $version. Unable to create compatible Gradle cache. Try update-java-alternatives -l and then manually export JAVA_HOME=..."
   fi
 fi
 
@@ -40,6 +40,10 @@ cp ../../mishkal-webserver-nolog.py interfaces/web
 # back to src
 cd ..
 
+
+GRADLE_USER_HOME_BAK=${GRADLE_USER_HOME}
+export GRADLE_USER_HOME=`pwd`/gradle_user_home
+
 if [ -d marytts ] ; then
   cd marytts
   if ! git pull; then
@@ -62,7 +66,9 @@ fi
 if ! cp stts_voices/voice-ar-nah-hsmm-5.2.jar stts_voices/voice-dfki-spike-hsmm-5.1.jar stts_voices/voice-stts_no_nst-hsmm-5.2.jar stts_voices/voice-stts_sv_nst-hsmm-5.2-SNAPSHOT.jar build/install/marytts/lib/; then
   m_error "Unable to install voices to Mary TTS STTS!"
 fi
-rm -rf .gradle
+
+export GRADLE_USER_HOME=${GRADLE_USER_HOME_BAK}
+
 # back to src
 cd ..
 

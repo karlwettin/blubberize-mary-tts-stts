@@ -17,9 +17,6 @@ variants:
         requirements: [ requirements-more-mishkal.txt, src/mishkal/requirements.txt ]
     copies: 
       - from: local
-        source: requirements-more-mishkal.txt
-        destination: .
-      - from: local
         source: ./src
         destination: ./src
       - from: local
