@@ -14,10 +14,10 @@ variants:
       packages: [ python-setuptools, openjdk-11-jre ]
     python:
         version: python2.7
-        requirements: [ requirements-mishkal-more.txt, src/mishkal/requirements.txt ]
+        requirements: [ requirements-more-mishkal.txt, src/mishkal/requirements.txt ]
     copies: 
       - from: local
-        source: requirements-mishkal-more.txt
+        source: requirements-more-mishkal.txt
         destination: .
       - from: local
         source: ./src

@@ -13,4 +13,3 @@ echo "Starting Mary TTS STTS."
 cd src/marytts
 ./gradlew run
 
-/bin/bash
