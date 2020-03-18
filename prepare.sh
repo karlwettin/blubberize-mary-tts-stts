@@ -34,21 +34,10 @@ else
     m_error "Unable to clone Mishkal git repo!"
   fi
   cd mishkal
-  git apply ../../mishkal.diff
 fi
+cp ../../mishkal-webserver-nolog.py interfaces/web
 
 # back to src
-cd ..
-
-# set gradle repository
-GRADLE_USER_HOME_BAK=${GRADLE_USER_HOME}
-if [ ! -d "gradle_cache" ]
-then
-  mkdir gradle_cache
-fi
-cd gradle_cache
-export GRADLE_USER_HOME=`pwd`
-#back to src
 cd ..
 
 if [ -d marytts ] ; then
@@ -73,7 +62,7 @@ fi
 if ! cp stts_voices/voice-ar-nah-hsmm-5.2.jar stts_voices/voice-dfki-spike-hsmm-5.1.jar stts_voices/voice-stts_no_nst-hsmm-5.2.jar stts_voices/voice-stts_sv_nst-hsmm-5.2-SNAPSHOT.jar build/install/marytts/lib/; then
   m_error "Unable to install voices to Mary TTS STTS!"
 fi
-export GRADLE_USER_HOME=${GRADLE_USER_HOME_BAK}
+rm -rf .gradle
 # back to src
 cd ..
 
