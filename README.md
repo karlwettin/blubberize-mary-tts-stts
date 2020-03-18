@@ -11,3 +11,11 @@
 ## run.sh
 
 * Starts the Docker image on local Docker.
+
+## Regading insecurity of Blubber
+
+* Gradle needs to create lock files in /srv/mary-tts-stts/src/gradle_user_home. 
+If there is a way to copy that path to ~runuser/.gradle with the right permissions
+instead, then we might be able to get around the problem.
+ 
+* Mishkal logs to disk. Create a diff that sends log to stdout instead.
