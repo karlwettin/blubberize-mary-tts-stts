@@ -4,6 +4,7 @@ base: docker-registry.wikimedia.org/wikimedia-buster
 
 runs:
   insecurely: true
+  environment: { MARY_TTS_MISHKAL_URL: "http://mishkal-service:8080/" }
 
 lives:
   in: /srv/mary-tts-stts

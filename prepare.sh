@@ -24,22 +24,6 @@ then
 fi
 cd src
 
-if [ -d "mishkal" ] ; then
-  cd mishkal
-  if ! git pull; then
-    m_error "Unable to pull from Mishkal git repo!"
-  fi
-else
-  if ! git clone https://github.com/linuxscout/mishkal.git; then
-    m_error "Unable to clone Mishkal git repo!"
-  fi
-  cd mishkal
-fi
-cp ../../mishkal-webserver-nolog.py interfaces/web
-
-# back to src
-cd ..
-
 
 GRADLE_USER_HOME_BAK=${GRADLE_USER_HOME}
 export GRADLE_USER_HOME=`pwd`/gradle_user_home
@@ -56,11 +40,11 @@ else
   cd marytts
 fi
 
-if ! ./gradlew clean build -x test; then
+if ! ./gradlew clean build -x test -x integrationTest; then
   m_error "Unable to build Mary TTS STTS!"
 fi
 
-if ! ./gradlew installDist; then
+if ! ./gradlew installDist -x test -x integrationTest; then
   m_error "Unable to build distribution of Mary TTS STTS!"
 fi
 if ! cp stts_voices/voice-ar-nah-hsmm-5.2.jar stts_voices/voice-dfki-spike-hsmm-5.1.jar stts_voices/voice-stts_no_nst-hsmm-5.2.jar stts_voices/voice-stts_sv_nst-hsmm-5.2-SNAPSHOT.jar build/install/marytts/lib/; then
