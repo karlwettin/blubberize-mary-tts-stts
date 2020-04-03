@@ -12,10 +12,7 @@ lives:
 variants:
   production:
     apt:
-      packages: [ python-setuptools, openjdk-11-jre ]
-    python:
-        version: python2.7
-        requirements: [ requirements-more-mishkal.txt, src/mishkal/requirements.txt ]
+      packages: [ openjdk-11-jre ]
     copies: 
       - from: local
         source: ./src
