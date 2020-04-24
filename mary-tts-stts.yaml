@@ -12,8 +12,11 @@ lives:
 variants:
   production:
     apt:
-      packages: [ openjdk-11-jre ]
+      packages: [ haproxy, openjdk-11-jre ]
     copies: 
+      - from: local
+        source: ./haproxy.cfg
+        destination: ./haproxy.cfg
       - from: local
         source: ./src
         destination: ./src

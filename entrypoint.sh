@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Starting HAProxy"
+/usr/sbin/haproxy -f haproxy.cfg
+
 echo "Starting Mary TTS STTS."
 export GRADLE_USER_HOME=/srv/mary-tts-stts/src/gradle_user_home
 #export MARY_TTS_MISHKAL_URL=http://localhost:8080/
